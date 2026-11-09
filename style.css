@@ -107,3 +107,12 @@ button:hover {
 .error-msg {
     color: #ef4444;
 }
+
+/* Validation Colors */
+input.valid {
+    border-color: #10b981 !important; /* Green */
+}
+
+input.invalid {
+    border-color: #ef4444 !important; /* Red */
+}
