@@ -2,6 +2,7 @@
 const form = document.getElementById("signup-form");
 const usernameInput = document.getElementById("username");
 const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
 
 // ===================== VALIDATION FUNCTIONS =====================
 function validateUsername(value) {
@@ -25,6 +26,16 @@ function validateEmail(value) {
     return "";
 }
 
+function validatePassword(value) {
+    if (value === "") {
+        return "Password is required";
+    }
+    if (value.length < 8) {
+        return "Password must be at least 8 characters";
+    }
+    return "";
+}
+
 // ===================== FORM SUBMIT =====================
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -37,8 +48,15 @@ form.addEventListener("submit", (e) => {
     const emailError = validateEmail(emailInput.value);
     document.getElementById("email-error").textContent = emailError;
     
+    // Validate password
+    const passwordError = validatePassword(passwordInput.value);
+    document.getElementById("password-error").textContent = passwordError;
+    
     // If no errors
-    if (usernameError === "" && emailError === "") {
-        console.log("Form is valid:", { username: usernameInput.value, email: emailInput.value });
+    if (usernameError === "" && emailError === "" && passwordError === "") {
+        console.log("Form is valid:", { 
+            username: usernameInput.value, 
+            email: emailInput.value 
+        });
     }
 });
