@@ -3,6 +3,7 @@ const form = document.getElementById("signup-form");
 const usernameInput = document.getElementById("username");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
+const confirmInput = document.getElementById("confirm-password");
 
 // ===================== VALIDATION FUNCTIONS =====================
 function validateUsername(value) {
@@ -36,27 +37,34 @@ function validatePassword(value) {
     return "";
 }
 
+function validateConfirmPassword(password, confirm) {
+    if (confirm === "") {
+        return "Please confirm your password";
+    }
+    if (password !== confirm) {
+        return "Passwords do not match";
+    }
+    return "";
+}
+
 // ===================== FORM SUBMIT =====================
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     
-    // Validate username
+    // Validate all fields
     const usernameError = validateUsername(usernameInput.value);
-    document.getElementById("username-error").textContent = usernameError;
-    
-    // Validate email
     const emailError = validateEmail(emailInput.value);
-    document.getElementById("email-error").textContent = emailError;
-    
-    // Validate password
     const passwordError = validatePassword(passwordInput.value);
+    const confirmError = validateConfirmPassword(passwordInput.value, confirmInput.value);
+    
+    // Display errors
+    document.getElementById("username-error").textContent = usernameError;
+    document.getElementById("email-error").textContent = emailError;
     document.getElementById("password-error").textContent = passwordError;
+    document.getElementById("confirm-error").textContent = confirmError;
     
     // If no errors
-    if (usernameError === "" && emailError === "" && passwordError === "") {
-        console.log("Form is valid:", { 
-            username: usernameInput.value, 
-            email: emailInput.value 
-        });
+    if (!usernameError && !emailError && !passwordError && !confirmError) {
+        console.log("Form is valid! Ready to submit.");
     }
 });
