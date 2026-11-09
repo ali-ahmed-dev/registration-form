@@ -59,3 +59,51 @@ button {
     margin-top: 5px;
     min-height: 15px; /* Prevents layout shift */
 }
+
+body {
+    background: #0f172a;
+    background-image: radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.2) 0%, transparent 40%),
+                      radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.2) 0%, transparent 40%);
+    color: #fff;
+}
+
+.form-container {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+h1 {
+    color: #38bdf8;
+}
+
+label {
+    color: #94a3b8;
+}
+
+input {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    transition: border 0.3s;
+}
+
+input:focus {
+    border-color: #38bdf8;
+}
+
+button {
+    background: #38bdf8;
+    color: #0f172a;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #7dd3fc;
+}
+
+.error-msg {
+    color: #ef4444;
+}
